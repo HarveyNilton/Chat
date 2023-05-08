@@ -26,7 +26,7 @@ function App() {
             <Route path='/register' element={<Register />} />
 
            <Route element={<ProtectedRouter />}>
-              <Route path="/" element={<Home />} />
+              <Route path="/:userName" element={<Home />} />
             </Route>
 
           </Routes>

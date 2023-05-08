@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled, { keyframes } from 'styled-components';
 
-const WindowsUser = ({openUser}) => {
+const WindowsUser = ({openUser,users}) => {
 
-    const user = useSelector(state => state.user)
-  
+    const [color, setColor] = useState()
+    
+    useEffect(() => {
+        if (users.isConnected) {
+            setColor("#14C38E");
+        } else{
+            setColor("#14C38E");
+        }
+
+    }, [users])
 
     return (
         <Content openUser={openUser}>
-            <h3>Online ({user.length}) </h3>
+            <h3>Online ({users.length}) </h3>
             <ul>
                     {
-                        user.map(user => (
-                            <li key={user.id}>{user.userName}</li>
+                        users.map(user => (
+                            <li style={{color: color} } key={user.id}>{user.userName}</li>
                         
                         ))
                        
@@ -69,5 +77,10 @@ const Content = styled.div`
 
     >h3{
         text-align: center;
+    }
+
+    >ul{
+        padding:10px;
+        
     }
 `

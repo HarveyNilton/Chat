@@ -10,7 +10,7 @@ const CardMessage = ({ message }) => {
 
     return (
         <Card>
-                <h2>{message.user.userName}</h2>
+                <h2>{message.user?.userName}</h2>
                 <h3>{message.message}</h3>
             <h5>{convertFromStringToDate(message.createdAt)}</h5>
         </Card>
@@ -20,15 +20,16 @@ const CardMessage = ({ message }) => {
 export default CardMessage;
 
 const Card = styled.div`
-  background-color: #F3F2DA;
+  background-color: #B8F1B0;
     border-radius: 5px;
-    height: 45px;
+    height: 50px;
     width: 90%;
     display: flex;
     flex-direction: column;
     padding: 5px;
     gap: 2px;
-
+    word-wrap: break-word;
+    
         >h2{
             font-size: 0.6rem;
             color: #0C9463;

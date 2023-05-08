@@ -27,7 +27,7 @@ const FormLogin = () => {
 
     return (
         <Card>
-            <h1>Login Chat</h1>
+            <h1>Free Chat </h1>
             <Form onSubmit={handleSubmit(submit)} >
                 <ContentInput>
                     <input placeholder='username' required type='text' id='userName'
@@ -36,7 +36,7 @@ const FormLogin = () => {
                 <button>Submit</button>
             </Form>
 
-            <h5 onClick={()=>navigate('/register')}>Register</h5>
+           { /*<h5 onClick={()=>navigate('/register')}>Register</h5>*/}
 
             {tError && <Toast type='error' message={message}/>}
         </Card>

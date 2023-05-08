@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { createUserThunk } from '../store/slice/user.slice';
 import Toast from '../toast/Toast';
 
 const FormRegister = () => {
@@ -16,7 +15,7 @@ const FormRegister = () => {
     const [tError, setTError] = useState(false)
 
     const submit = (data) => {
-        dispatch(createUserThunk(data,navigate,reset,setMessage,setTSucces,setTError))
+       // dispatch(createUserThunk(data,navigate,reset,setMessage,setTSucces,setTError))
     }
 
     return (

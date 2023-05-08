@@ -16,31 +16,15 @@ export const userslice = createSlice({
 
 export const getAllUsersThunk = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    axios.get('/users')
+    axios.get('/users',getConfig())
         .then((res) => dispatch(setUsers(res.data)))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
-export const createUserThunk = (data,navigate,reset,setMessage,setTSucces,setTError) => (dispatch) => {
+export const deleteUserThunk = (id) => (dispatch) => {
     dispatch(setIsLoading(true));
-    axios.post('/users', data)
-        .then((res) => {
-            setMessage(res.data.message);
-            dispatch(getAllUsersThunk())
-            reset()
-            setTSucces(true);
-            setTimeout(() => {
-                setTSucces(false);
-                navigate('/login')
-            }, 2000);
-        
-        }).catch(err => {
-            setMessage(err.response.data.message);
-            setTError(true);
-            setTimeout(() => {
-                setTError(false);
-            }, 3000);
-        })
+    axios.delete(`/users/${id}`)
+        .then(() => dispatch(getAllUsersThunk()))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
@@ -51,7 +35,7 @@ export const userLoginThunk = (data,navigate,reset,setMessage,setTError) => (dis
             dispatch(getAllUsersThunk())
             localStorage.setItem('token', res.data.token);
             reset();
-            navigate('/')
+            navigate(`/${data.userName}`)
         }).catch(err => {
             setMessage(err.response.data.message)
             setTError(true);

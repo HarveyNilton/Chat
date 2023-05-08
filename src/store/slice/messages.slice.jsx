@@ -23,7 +23,7 @@ export const getAllMessageThunk = () => (dispatch) => {
 
 export const creatteMessagesThunk = (data) => (dispatch) => {
     dispatch(setIsLoading(true));
-    axios.post('/messages',data,getConfig())
+    axios.post('/messages',data, getConfig())
         .then(() => dispatch(getAllMessageThunk()))
         .finally(() => dispatch(setIsLoading(false)));
 }
